@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZyraCart 💫</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🔐 Auth Section -->
+  <section id="authSection">
+    
+
+    <h2>Welcome to ZyraCart 🛍️</h2>
+    <div id="authForm">
+      <input type="email" id="authEmail" placeholder="Email" required />
+      <input type="password" id="authPassword" placeholder="Password" required />
+      <input type="password" id="authConfirm" placeholder="Confirm Password" style="display:none;" />
+      <button onclick="handleAuth()">Sign In</button>
+      <p id="toggleAuth" onclick="toggleAuthMode()">No account? Sign Up</p>
+    </div>
+  </section>
+
+  <!-- 🧭 Navbar -->
+  <nav id="mainNav" style="display:none;">
+    <h1>🛍️ ZyraCart</h1>
+    <button onclick="showSection('home')">🏠 Home</button>
+    <button onclick="showSection('cart')">🛒 Cart (<span id="cartCount">0</span>)</button>
+    <button onclick="showSection('wishlist')">💖 Wishlist (<span id="wishlistCount">0</span>)</button>
+    <button onclick="toggleDarkMode()">🌓 Toggle Theme</button>
+    <button onclick="logout()">🚪 Logout</button>
+  </nav>
+
+  <!-- 🔍 Filter Bar -->
+  <section id="filterBar" style="display:none;">
+    <input type="text" id="searchInput" placeholder="Search..." oninput="renderProducts()" />
+    <select id="categoryFilter" onchange="renderProducts()">
+      <option value="All">All Categories</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Clothing">Clothing</option>
+    </select>
+    <select id="sortOption" onchange="renderProducts()">
+      <option value="">Sort By</option>
+      <option value="price">Price</option>
+      <option value="name">Name</option>
+    </select>
+  </section>
+
+  <!-- 🏠 Product Section -->
+  <section id="home" class="section"></section>
+
+  <!-- 🛒 Cart Section -->
+  <section id="cart" class="section"></section>
+
+  <!-- 💖 Wishlist Section -->
+  <section id="wishlist" class="section"></section>
+
+  <!-- ℹ️ Modal for Product Detail -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <img id="modalImage" />
+      <h3 id="modalName"></h3>
+      <p id="modalCategory"></p>
+      <p id="modalPrice"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
